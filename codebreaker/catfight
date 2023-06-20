@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+long solve(deque<int> dq){
+	long s=0;
+	while(!dq.empty()){
+		s+=dq.front();
+		dq.pop_front();
+	}
+	
+	return s;
+}
+
+int main(){
+	cin.tie(0);
+	ios_base::sync_with_stdio(0);
+	
+	long n,m,q;
+	long si=0;
+	deque<int> dq;
+	cin>>n>>m;
+	
+	cin>>q;
+	dq.push_back(q);
+	
+	for(long i=1;i<n;i++){
+		//while(solve(dq)<m){
+			//cin>>q;
+			//dq.push_back(q);
+		//}
+		if(solve(dq)<=m){
+			cin>>q;
+			dq.push_back(q);
+		}
+		while(solve(dq)>m){
+			si=long(max(int(si),int(dq.size())-1));
+			dq.pop_front();
+		}
+	}
+	//while(!dq.empty()){
+		//cout<<dq.front()<<' ';
+		//dq.pop_front();
+	//}
+	//cout<<endl;
+	cout<<si<<endl;
+	
+	
+}
