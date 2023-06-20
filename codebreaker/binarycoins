@@ -1,0 +1,24 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef unsigned long long ull;
+
+int main(){
+	
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	
+	uint64_t k;
+	cin>>k;
+	int cnt=0;
+	for(int i=63;i>=0;i--){
+			if((1ULL<<i)<=k){
+				k=k%(1ULL<<i);
+				cnt++;
+			}
+		}
+	cout<<cnt;
+	
+return 0;
+}
