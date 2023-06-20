@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll binpow(ll a,ll b, ll m){
+	ll r=1;
+	while(b>0){
+		if(b&1) r=r*a%m;
+		a=a*a%m;
+		b>>=1;
+	}
+	return r;
+}
+
+int main(){
+	
+	ll k,a,b,m;
+	
+	cin>>k;
+	vector<ll> v;
+	
+	for(ll i=0;i<k;i++){
+		cin>>a>>b>>m;
+		ll ans=binpow(a,b,m);
+		v.push_back(ans);
+	}
+	
+	for(ll q:v)cout<<q<<'\n';
+}
