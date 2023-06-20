@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef pair<int,int> ii;
+typedef pair<bool,ii> bii;
+
+//#define fi first
+//#define se second
+
+int main(){
+	
+	//sum,(bool,<int,int>)
+	
+	
+	int a,b,c,d;
+	cin>>a>>b>>c>>d;
+	map<int, pair<bool,pair<int,int>>>mp;
+	
+	int aa[a],ab[b],ac[c],ad[d];
+	
+	for(int i=0;i<a;i++) cin>>aa[i];
+	for(int i=0;i<b;i++) cin>>ab[i];
+	for(int i=0;i<c;i++) cin>>ac[i];
+	for(int i=0;i<d;i++) cin>>ad[i];
+	
+	for(int i=0;i<a;i++){
+		for(int j=0;j<b;j++){
+			int sum=aa[i]+ab[j];
+			mp[sum]=pair<bool, pair<int,int>>(1,pair<int,int>(aa[i],ab[j]));
+		}
+	}
+	
+	for(int i=0;i<c;i++){
+		for(int j=0;j<d;j++){
+			int sum=ac[i]+ad[j];
+			if(mp[-sum].first==1){
+				cout<<mp[-sum].second.first<<" "<<mp[-sum].second.second<<" "<<ac[i]<<" "<<ad[j]<<endl;
+				return 0;
+			}
+		}
+	}
+	
+}
