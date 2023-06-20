@@ -1,0 +1,23 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<int,int> vii;
+typedef pair<int,int> ii;
+
+
+int main() {
+    int n;
+	cin>>n;
+    int arrx[n],arry[n];
+    
+    for(int i=0;i<n;i++){
+        cin>>arrx[i]>>arry[i];
+    }
+    
+    sort(arrx,arrx+n);
+    sort(arry,arry+n);
+    
+    if(n&1)cout<<arrx[(n-1)>>1]<<' '<<arry[(n-1)>>1];
+    else cout<<arrx[n/2]<<' '<<arry[n/2];
+}
