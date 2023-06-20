@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+	map<long, long> mp;
+	
+	//vector<long> v;
+	
+	long k;//,ki;
+	cin>>k;
+	//bool fl=0;
+	
+	//ki=k;
+	
+	for(long i=2;i*i<=k;i++){
+		while(k%i==0){
+			if(mp.find(i)==mp.end())mp[i]=0;
+			mp[i]++;
+			//v.push_back(i);
+			k/=i;
+		}
+	}
+	if(k>1){
+		mp[k]=1;
+	}
+
+	for(auto it=mp.begin();it!=mp.end();it++){
+		cout<<it->first<<'^'<<it->second<<'\n';
+	}
+
+	
+}
