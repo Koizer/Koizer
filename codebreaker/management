@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int N,ai;
+	cin>>N;
+	map<int, int> mp;
+	for(int i=1;i<=N;i++) mp[i]=0;
+	for(int j=0;j<N-1;j++){
+		cin>>ai;
+		mp[ai]++;
+	}
+	for(int i=1;i<=N;i++)cout<<mp[i]<<'\n';
+}
