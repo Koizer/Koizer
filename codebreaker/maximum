@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+
+int g,f;
+cin>>f>>g;
+	
+cout<<max(g,f);
+
+
+return 0;
+}
