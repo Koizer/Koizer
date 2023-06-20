@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	vector<vector<int>> v(10001);
+	
+	int n,e,ea,eb;
+	
+	cin>>n>>e;
+	
+	for(int i=0;i<e;i++){
+		cin>>ea>>eb;
+		v[ea-1].push_back(eb);
+		v[eb-1].push_back(ea);
+	}
+	
+	for(int i=0;i<n;i++){
+		for(int j:v[i]){
+			cout<<j<<' ';
+		}
+		cout<<endl;
+	}
+	
+}
