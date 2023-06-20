@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	list<int> lst;//={0,1,2,3,4,5};
+	string seq;//="ABBABA.";
+	
+	int g,k;
+	cin>>k>>g>>seq;
+	for(int i=0;i<k;i++){
+		lst.push_back(i);
+	}
+	
+	lst.sort();
+	//for(auto j=lst.begin();j!=lst.end();j++)cout<<*j;
+	//cout<<endl;
+	
+	for(int i=0;i<int(seq.size())-1;i++){
+		auto itr=lst.begin();
+		if(seq[i]=='A'){
+			lst.push_back(*itr);
+			lst.pop_front();
+		}
+		else{
+			advance(itr,1);
+			lst.push_back(*itr);
+			lst.erase(itr);
+		}
+		//for(auto j=lst.begin();j!=lst.end();j++)cout<<*j;
+		//cout<<endl;
+		
+	}
+	
+	
+	/*
+	lst.insert(lst.begin(),2);
+	lst.insert(lst.begin(),3);
+	lst.insert(lst.begin(),1);
+	lst.insert(lst.begin(),0);
+	
+	lst.sort();
+	
+	auto j=lst.begin();
+	advance(j,1);
+	lst.insert(j,4);
+	*/
+	auto ib=lst.begin(), ie=lst.begin();
+	advance(ib, g-1);
+	advance(ie,g+2);
+	for(auto i=ib;i!=ie;i++){
+			cout<<*i<<' ';
+		}
+	
+}
