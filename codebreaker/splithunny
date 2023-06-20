@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+const int MAXN = 100;
+char grid[MAXN][MAXN];
+bool visited[MAXN][MAXN];
+int dr[] = {1, -1, 0, 0};
+int dc[] = {0, 0, 1, -1};
+int r, c;
+
+void dfs(int row, int col) {
+    visited[row][col] = true;
+    for (int i = 0; i < 4; i++) {
+        int new_row = row + dr[i];
+        int new_col = col + dc[i];
+        if (new_row >= 0 && new_row < r && new_col >= 0 && new_col < c &&
+            !visited[new_row][new_col] && grid[new_row][new_col] == 'H') {
+            dfs(new_row, new_col);
+        }
+    }
+}
+
+int main() {
+    cin >> r >> c;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> grid[i][j];
+        }
+    }
+
+    int cnt = 0;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            if (!visited[i][j] && grid[i][j] == 'H') {
+                dfs(i, j);
+                cnt++;
+            }
+        }
+    }
+
+    cout << "Oh, bother. There " << (cnt == 1 ? "is " : "are ")
+         << cnt << " pool" << (cnt == 1 ? "" : "s") << " of hunny." << endl;
+
+    return 0;
+}
