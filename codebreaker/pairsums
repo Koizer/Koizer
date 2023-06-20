@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long arr[100001],arr2[100001];
+
+int main(){
+
+	
+	long n,cnt=0;
+	cin>>n;
+		for(int i=0;i<n;i++){
+			long ai;
+			cin>>ai;
+			if(ai%2==0){
+				arr2[0]++;
+				arr2[arr2[0]]=ai;
+				//cout<<arr2[0]<<endl;
+			}
+			else{
+				arr[0]++;
+				arr[arr[0]]=ai;
+				//cout<<arr[0]<<endl;
+			}
+		}
+		cnt+=arr[0]*arr2[0];
+	
+	cout<<cnt;
+}
