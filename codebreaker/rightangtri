@@ -1,0 +1,16 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // Write C++ code here
+int N;
+cin>>N;
+ 
+ for(int i=1;i<=N;i++){
+     cout<<string(i,'*')<<'\n';
+ }
+
+    return 0;
+}
