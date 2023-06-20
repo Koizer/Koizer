@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    long a,b;
+    cin>>a>>b;
+    long c;
+    long arr[a];
+   long psarr[a];
+    vector<long> ans;
+
+    for(long i=0;i<a;i++){
+        cin>>c;
+        arr[i]=c;
+    }
+
+    long ps=0;
+    for(long j=0;j<a;j++){
+        ps+=arr[j];
+        psarr[j]=ps;
+    //    cout<<ps<<' ';
+    }
+
+    //cout<<endl;
+
+    long d,e,f=0;
+    for(long k=0;k<b;k++){
+        cin>>d>>e;
+//        if((d-2)>0)ans.push_back(psarr[e-1]-psarr[d-2]);
+//        else if(d-2<=0)ans.push_back(psarr[e-1]);
+
+        if(d==1)ans.push_back(psarr[e-1]);
+        else ans.push_back(psarr[e-1]-psarr[d-2]);
+    }
+
+    for(long k:ans)cout<<k<<'\n';
+
+
+return 0;
+}
