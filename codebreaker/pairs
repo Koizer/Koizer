@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n; cin >> n;
+    long long k; cin >> k;
+    vector<long long> neg, pos;
+    long long zero = 0;
+    for (int i = 0; i < n; ++i) {
+        int a; cin >> a;
+        if (a < 0) {
+            neg.push_back(-a);
+        } else if (a > 0) {
+            pos.push_back(a);
+        } else {
+            ++zero;
+        }
+    }
+
+    sort(begin(neg), end(neg));
+    sort(begin(pos), end(pos));
+
+    int szNeg = size(neg), szPos = size(pos);
+
+    auto f = [&](long long x) {
+        long long cnt = 0;
+        if (0 < x) {
+            cnt += zero * (n - zero) + zero * (zero - 1) / 2;
+        }
+        
+        auto add = [&](vector<long long>& li) {
+            int szLi = size(li);
+            for (int i = 0, j = szLi - 1; i < szLi; ++i) {
+                while (j >= 0 && li[i] * li[j] >= x) {
+                    --j;
+                }
+
+                cnt += min(i, j + 1);
+            }
+        };
+
+        add(neg);
+        add(pos);
+
+        for (int i = 0, j = szPos; i < szNeg; ++i) {
+            while (j - 1 >= 0 && -neg[i] * pos[j - 1] < x) {
+                --j;
+            }
+            cnt += szPos - j;
+        }
+
+        return cnt < k;
+    };
+
+    long long lo = -1e18, hi = 1e18;
+    while (lo < hi) {
+        long long mid = lo + (hi - lo + 1) / 2;
+        if (f(mid)) {
+            lo = mid;
+        } else {
+            hi = mid - 1;
+        }
+    }
+
+    cout << lo << '\n';
+}
