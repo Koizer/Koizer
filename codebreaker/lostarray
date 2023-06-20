@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vll;
+
+vll sgt;
+ll INF = 1;
+
+int main(){
+	
+	ll n,q;
+	cin>>n>>q;
+	
+	ll arr[n];
+	for(ll i=0;i<n;i++)arr[i]=INF;
+	
+	ll a,b,c;
+	for(ll i=0;i<q;i++){
+		cin>>a>>b>>c;
+		a--;b--;
+		arr[a]=max(arr[a],c);
+		arr[b]=max(arr[b],c);
+	}
+	
+	for(ll i=0;i<n;i++){
+		cout<<arr[i]<<' ';
+	}
+	
+}
