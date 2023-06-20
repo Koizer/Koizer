@@ -1,0 +1,24 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+ll dp[3001][3001];
+
+ll n,k;
+
+const ll fuk = 998244353;
+
+ll solve(ll cn, ll ck){
+    if(cn==n) return 1;
+    if(dp[cn][ck]!=0)return dp[cn][ck];
+    return dp[cn][ck] = ((ck==k-1?0:solve(cn+1,ck+1))+solve(cn+1,0))%fuk;
+}
+
+int main() {
+	memset(dp,0,sizeof(dp));
+    cin>>n>>k;
+    cout<<solve(0,0);
+
+}
