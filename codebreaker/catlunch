@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vll;
+
+
+ll ded =1e10;
+
+#define fastio ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+
+int main(){ fastio;
+	
+	ll n,k;
+	
+	cin>>n>>k;
+	
+	vll v(n);
+	
+	for(ll i=0;i<n;i++)cin>>v[i];
+	
+	ll ind=k, ans=0,res=0;
+	
+	priority_queue<ll> q;
+	
+	for(ll i=0;i<k;i++)q.push(v[i]);
+	
+	while(!q.empty()){
+		ll cur =q.top();
+		q.pop();
+		
+		res+=cur;
+		ans=max(ans,res);
+		
+		if(ind<n)q.push(v[ind++]);
+	}
+	cout<<ans<<'\n';
+}
