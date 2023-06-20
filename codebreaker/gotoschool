@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long arr[100001];//, arr2[100001];
+
+
+int main(){
+	
+	long ai,si;
+	cin>>ai;
+	for(int i=1;i<=ai;i++){
+		cin>>si;
+		arr[si]=i;
+	}
+	for(int i=1;i<=ai;i++)cout<<arr[i]<<' ';
+	
+}
