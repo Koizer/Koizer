@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long mx(vector<int>& a){
+	long long p=1;
+	for(int i:a){ p=p*i;}
+	return p;
+		
+}
+
+int main(){
+	
+
+	vector<int> n, r, nr;
+	int a, b;
+	cin>>a>>b;
+	a=a-1;
+	b=b-1;
+	for(int i=a;i>=1;i--)n.push_back(i);
+	for(int i=a-b;i>=1;i--) nr.push_back(i);
+	for(int i=b; i>=1;i--) r.push_back(i);
+	
+	if(r.size()>nr.size()){
+		vector<int>::iterator it=find(n.begin(), n.end(), r[0]);
+		n.erase(n.begin()+distance(n.begin(),it),n.end());
+		
+		cout<<mx(n)/mx(nr);
+	}
+	else if(r.size()<=nr.size()){
+		vector<int>::iterator it=find(n.begin(), n.end(), nr[0]);
+		n.erase(n.begin()+distance(n.begin(),it),n.end());
+		cout<<mx(n)/mx(r);
+	}
+
+	/*for(int i:n)cout<<i<<" ";
+	cout<<endl;
+
+	for(int i:nr)cout<<i<<" ";
+	cout<<endl;
+
+	for(int i:r)cout<<i<<" ";
+	cout<<endl;
+	*/
+	
+	//vector<int>::iterator it = find(n.begin(),n.end(),1);
+	
+	//cout<<distance(n.begin(),it);
+
+
+	//vector<int>::iterator it=find(n.begin(), n.end(), nr[0]);
+	//n.erase(n.begin()+distance(n.begin(),it),n.end());
+
+	
+	
+	
+}
