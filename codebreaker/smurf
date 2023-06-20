@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+	vector<int> v,v1;
+	
+	int sz,k;
+	cin>>sz;
+	
+	for(int i=0;i<sz;i++){
+		v.push_back(i+1);
+		cin>>k;
+		v1.push_back(k);
+	}
+	
+	
+	vector<int> e;
+	vector<int> o;
+	
+	if(sz%2==0){
+		for(int i=0;i<sz;i++){
+			if((i+1)%2==0) e.push_back(v[i]);
+			else o.push_back(v[i]);
+		}
+		
+		sort(e.begin(), e.end(),[&](int a, int b){
+			return a>b;
+		});
+	}
+	else{
+		for(int i=0;i<sz;i++){
+			if((i+1)%2==1) e.push_back(v[i]);
+			else o.push_back(v[i]);
+		}
+		
+		sort(e.begin(), e.end(),[&](int a, int b){
+			return a>b;
+		});
+
+	}
+	
+	
+	//e.insert(e.end(), o.begin(), o.end());
+	for(int i:e)cout<<v1[i-1]<<' ';
+	for(int i:o)cout<<v1[i-1]<<' ';
+	
+	
+	
+
+}
