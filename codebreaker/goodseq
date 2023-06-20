@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+map<long,long> mp;
+    //mp[3]=1;
+    long k,n,ans=0;
+    cin>>k;
+    
+    for(long i=0;i<k;i++){
+        cin>>n;
+        if(mp.find(n)==mp.end())mp[n]=0;
+        mp[n]++;
+    }
+    for(auto it=mp.begin();it!=mp.end();it++){
+        //cout<<it->first<<' '<<it->second<<endl;
+        if(it->second >= it->first)ans+=it->second-it->first;
+        else ans+=it->second;
+    }
+    cout<<ans;
+}
