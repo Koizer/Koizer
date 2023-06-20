@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vll;
+
+ll mxsubarr(vll v){
+	ll mxsofar=-1e10, mxending=0;
+	
+	for(int i=0;i<int(v.size());i++){
+		mxending=mxending+v[i];
+		if(mxsofar<mxending) mxsofar=mxending;
+		
+		if(mxending<0)mxending=0;
+	}
+	
+	return mxsofar;
+	
+}
+
+int main(){
+	
+	int n;cin>>n;
+	
+	vll v(n);//={-3,6,7,-3,1,-2,10,-2,8};
+	for(int i=0;i<n;i++)cin>>v[i];
+	
+	vll prefix(n+5), suffix(n+5);
+	
+	
+	ll sum=0,mx=0;
+	
+	for(int i=0;i<n;i++){
+		sum=max(0ll,sum+v[i]);
+		mx=max(mx,sum);
+		
+		prefix[i]=mx;
+		//cout<<prefix[i]<<' ';
+	}
+	
+	sum=0;mx=0;
+	//cout<<endl;
+	
+	for(int i=n-1;i>=0;i--){
+		sum=max(0ll,sum+v[i]);
+		mx=max(mx,sum);
+		
+		suffix[i]=mx;
+		//cout<<suffix[i]<<' ';
+	}
+	
+	//cout<<endl;
+	
+	ll ans=0;
+	for(int i=0;i<n;i++){
+		ans=max(ans,prefix[i]+suffix[i+1]);
+	}
+	
+	cout<<ans;
+	
+	
+	
+	
+	
+	
+	
+	
+}
