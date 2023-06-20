@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	// array and vector they both are containers to store multiples
+	int n = 2;
+	long long arr[n];
+	
+	cin >> arr[0] >> arr[1];
+	//arr[] = {a, b}
+	
+	cout << arr[0] + arr[1];
+	
+}
+
