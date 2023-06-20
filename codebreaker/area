@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long area(long a, long b){
+	return a*b;
+}
+	
+long long int S=0;
+
+int main(){
+	
+	 long t,a,b;
+	 
+	 scanf("%ld",&t);
+	 for(long i=0;i<t;i++){
+		scanf("%ld%ld",&a,&b);
+		S+=area(a,b);
+	}
+	
+	printf("%lld",S);
+	 
+
+
+}
+
