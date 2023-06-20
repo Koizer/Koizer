@@ -1,0 +1,27 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+ll solve(ll a, ll b, ll c, ll d){
+    ll l=0, r=100000,m;
+    while(r-l>1){
+        m = (r+l)/2;
+        if(a*m*m*m+b*m*m+c*m>=d) r=m;
+        else{
+            l=m;
+        }
+    }
+	return r;
+}
+
+int main() {
+    // Write C++ code here
+    ll n,a,b,c,d;
+    cin>>n;
+    while(n--){
+        cin>>a>>b>>c>>d;
+        cout<<solve(a,b,c,d)<<'\n';
+    }
+}
