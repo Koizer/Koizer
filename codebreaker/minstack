@@ -1,0 +1,45 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+stack<int>s;
+stack<int>mins;
+
+
+void push(int x) {
+    s.push(x);
+    if(mins.empty()||x<=mins.top()) mins.push(x);
+    
+}
+void pop(){
+    if(s.top()==mins.top()){
+        mins.pop();
+    }
+    s.pop();
+}
+
+int top(){
+    return s.top();
+}
+
+int getMin(){
+    return mins.top();
+}
+
+/*int main(){
+    int n;
+    cin>>n;
+    while(n--){
+        int q,x;
+        cin>>q;
+        if(q==0){
+            cin>>x;
+            push(x);
+        }
+        else if(q==1) pop();
+        else if(q==2) cout<<top()<<'\n';
+        else cout<<getMin()<<'\n';
+    }
+}*/
