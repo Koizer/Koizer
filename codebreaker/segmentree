@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+vi segt;
+const int INF=1e9;
+
+void build(int nd, int tl, int tr){
+	if(tl==tr){
+		segt[nd]=0;
+		return;
+	}
+		int tm=(tl+tr)/2;
+		build(nd*2,tl, tm);
+		build(nd*2+1, tm+1, tr);
+		segt[nd]=min(segt[nd*2],segt[nd*2+1]);
+}
+
+void update(int nd, int tl, int tr, int ps, int new_val){
+	if(tl==tr){
+		segt[nd]=new_val;
+		return;
+		}
+		int tm=(tl+tr)/2;
+		if(ps<=tm){
+			update(2*nd,tl,tm,ps,new_val);
+		}
+		else{
+			update(2*nd+1, tm+1,tr, ps,new_val);
+		}
+		segt[nd]=min(segt[nd*2],segt[nd*2+1]);
+}
+
+int query(int nd, int tl, int tr, int l, int r){
+	if(l<=tl && tr<=r) return segt[nd];//
+	if(l>tr||tl>r) return INF;
+	
+	int tm=(tr+tl)/2;
+	return min(query(nd*2,tl,tm,l,r),query(nd*2+1,tm+1,tr,l,r));
+}
+
+
+int main(){ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	
+	int n,m;
+	cin>>n>>m;
+	segt=vi(4*n);
+	
+	build(1,0,n-1);
+	
+	while(m--){
+		int a,b,c; cin>>a>>b>>c;
+		
+		if(a==1) update(1,0,n-1,b,c);//update(1,0,si-1,b-1,c);
+		else{
+			cout<<query(1,0,n-1,b,c)<<'\n';
+		}
+	}
+	
+}
