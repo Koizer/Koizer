@@ -1,0 +1,62 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+ll arr[100005];
+
+ll merge(ll arr[], ll tmp[], ll l, ll m, ll r){
+    ll i=l,j=m,k=l;
+    ll cnt=0;
+    
+    while(i<=m-1 && j<=r){
+        if(arr[i]<=arr[j]){
+            tmp[k++]=arr[i++];
+        }
+        else{
+            tmp[k++]=arr[j++];
+            cnt=cnt+(m-i);
+        }
+    }
+    while(i<=m-1)tmp[k++]=arr[i++];
+    while(j<=r) tmp[k++]=arr[j++];
+    
+    
+    for(i=l;i<=r;i++)arr[i]=tmp[i];
+    
+    return cnt;
+}
+
+ll mergesort(ll arr[], ll tmp[], ll l, ll r){
+    ll m,cnt=0;
+    if(r>l){
+        m=(l+r)/2;
+        
+        cnt+=mergesort(arr,tmp,l,m);
+        cnt+=mergesort(arr,tmp,m+1,r);
+        
+        cnt+=merge(arr,tmp,l,m+1,r);
+    }
+    
+    return cnt;
+}
+
+ll solve(ll arr[], ll n){
+    ll tmp[n];
+    return mergesort(arr,tmp,0,n-1);
+}
+
+int main(){
+    
+    int n;
+    cin>>n;
+    while(n--){
+        ll sz;
+        cin>>sz;
+        for(ll i=0;i<sz;i++){
+            cin>>arr[i];
+        }
+        cout<<solve(arr,sz)<<'\n';
+    }
+}
