@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int fibo(int n);
+long int fib(int n);
+void solve(int n);
+int term[200001];
+
+int main(){
+    int k;
+    cin>>k;
+    //cin.tie(0);
+    for(int i=0;i<=k;i++){
+        cout<<fib(i)%998244353<<'\n';
+    }
+    return 0;
+}
+
+
+
+
+int fibo(int n){
+
+
+    if(n<=1) return n;
+
+    if(term[n]!=0){
+        return term[n];
+    }
+    else{term[n] = fibo(n-1)+fibo(n-2);
+    return term[n];}
+
+
+}
+
+long int fib(int n){
+    if(n<=1) return n;
+    if(term[n]!=0){
+        return term[n];
+    }
+    else{
+        term[n] = fib(n-1)%998244353+fib(n-2)%998244353;
+
+        return term[n];
+    }
+}
+
+
+
+void solve(int k){
+    for(int i=0;i<=k;i++){
+        cout<<fibo(i)<<'\n';
+    }
+}
+
+
+
