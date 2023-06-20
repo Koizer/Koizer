@@ -1,0 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int findMin(int n, int arr[]){
+	return *min_element(arr,arr+n);
+} 
