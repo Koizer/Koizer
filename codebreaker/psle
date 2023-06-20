@@ -1,0 +1,20 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // Write C++ code here
+int N;
+cin>>N;
+ 
+ if(N>=91) cout<<"A*";
+ else if(N>=75) cout<<"A";
+ else if(N>=60) cout<<"B";
+ else if(N>=50) cout<<"C";
+ else if(N>=35) cout<<"D";
+ else if(N>=20) cout<<"E";
+ else cout<<"U";
+
+    return 0;
+}
