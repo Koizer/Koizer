@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+
+int main(){fastio;
+    
+    int n;cin>>n;
+    while(n--){
+   stack<char> zoo;
+	string s;
+	cin>>s;
+	zoo.push(s[0]);
+	
+	for(int i=1;i<int(s.size());i++){
+		if(s[i]=='B'){if(!zoo.empty())zoo.pop();
+			else zoo.push(s[i]);}
+		else zoo.push(s[i]);
+	}
+	
+	cout<<zoo.size()<<'\n';
+}
+}
