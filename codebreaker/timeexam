@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void  timeexam(long long int k){
+    long long int hr=(k/60)%24;
+    long long int mn=k%60;
+
+    string hrs=to_string(hr);
+    string mns=to_string(mn);
+
+    if(hrs.length()==1)hrs="0"+hrs;
+    if(mns.length()==1)mns="0"+mns;
+    cout<<hrs+mns;
+}
+
+int main(){
+
+ios::sync_with_stdio(0);
+cin.tie(0);
+long k;
+cin>>k;
+timeexam(k);
+return 0;
+}
