@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	long n,m;
+	cin>>n>>m;
+	
+	if(n%m==0 && m>1){
+		for(long i=0;i<n;i++){
+			cout<<n/m<<' ';
+		}
+	}
+	else{
+		long i=0;
+		while(m>1){
+			cout<<1<<' ';
+			i++;
+			m--;
+		}
+		for(long j=0;j<n-i;j++){
+			cout<<n-i<<' ';
+		}
+	}
+}
