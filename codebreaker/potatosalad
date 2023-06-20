@@ -1,0 +1,26 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // Write C++ code here
+    int N,Mi;
+    cin>>N>>Mi;
+    
+    int arr[N];
+    for(int i=0;i<N;i++){
+        cin>>arr[i];
+    }
+    sort(arr, arr+N, [&](int a, int b){
+        return a>b;
+    });
+    int sum=0;
+    
+    for(int i=0;i<Mi;i++)sum+=arr[i];
+    cout<<sum;
+
+    
+    
+    return 0;
+}
