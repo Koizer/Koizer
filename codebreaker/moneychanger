@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+int INF=1e9;
+
+
+int solve(int x, vi& v){
+	
+	if(x<0) return INF;
+	if(x==0) return 0;
+	
+	int best=INF;
+	for(auto c:v){
+		best = min(best, solve(x-c,v)+1);
+	}
+	return best;
+}
+
+int solve_memo(int x, vi& v, vector<bool>& ready, vi& value){
+	if(x<0) return INF;
+	if(x==0) return 0;
+	if(ready[x])return value[x];
+	
+	int best=INF;
+	for(auto c:v){
+		best=min(best, solve_memo(x-c,v,ready,value)+1);
+	}
+	
+	//if(best==INF) best=-1;
+	
+	ready[x]=1;
+	value[x]=best;
+	//if(best==INF)return -1;
+	return best;
+}
+
+int main(){
+		
+		int n,q;
+		cin>>n>>q;
+		vi v(n);//={1,2,5,10,25,50};
+		for(int i=0;i<n;i++)cin>>v[i];
+		
+		vector<bool> ready(1e7,0);
+		vi value(1e7, 0);
+		if(solve_memo(q,v,ready,value)!=INF)cout<<solve_memo(q,v,ready,value);
+		else cout<<-1;
+}
