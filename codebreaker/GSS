@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+
+int main(){
+	
+	int n,sum=0;
+	cin>>n;
+	
+	int arr[n];
+	
+	
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	
+	//cout<<arr[7];
+	sort(arr, arr+n,[](int a, int b){
+		return a>b;
+	});
+	for(int i=0,j=0,mn=INT_MAX;i<n;i++){
+		
+		sum+=arr[i];
+		mn=min(mn,arr[i]);
+		j++;
+		if(j>3){
+			
+			sum-=mn;
+			//cout<<mn<<endl;
+			mn=INT_MAX;
+			j=0;
+		}
+		//cout<<sum<<endl;
+	}
+	
+	cout<<sum<<endl;
+	
+	
+	
+}
